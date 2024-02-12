@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@EnableEurekaClient
+//@EnableEurekaClient
 public class ProfileApplication {
 
 	public static void main(String[] args) {
@@ -20,16 +20,12 @@ public class ProfileApplication {
 	 * No 'Access-Control-Allow-Origin' header is present on the requested resource
 	 * @return
 	 */
-	public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200")
-                .allowedMethods("*")
-                .allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method",
-                        "Access-Control-Request-Headers");
-            }
-        };
-    }	
-}
+	/*
+	 * public WebMvcConfigurer corsConfigurer() { return new WebMvcConfigurer() {
+	 * 
+	 * @Override public void addCorsMappings(CorsRegistry registry) {
+	 * registry.addMapping("/**") .allowedOrigins("http://localhost:4200")
+	 * .allowedMethods("*") .allowedHeaders("Content-Type", "X-Requested-With",
+	 * "accept", "Origin", "Access-Control-Request-Method",
+	 * "Access-Control-Request-Headers"); } }; }
+	 */}

@@ -1,8 +1,64 @@
 spring:
   application:
     name: profileservice 
+  datasource:
+    url: jdbc:mysql://localhost:3306/skilltracker?createDatabaseIfNotExist=true
+    username: root
+    password: pass@word1    
+server:
+  port: 8081
+  error:
+    whitelabel:
+      enabled: false
+      
+##spring:
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    url: jdbc:mysql://localhost:3306/skilltracker?createDatabaseIfNotExist=true
+    username: root
+    password: pass@word1
     
-logging:
-  file:
-    path: C:/FSE4/ELK_Logging 
-    name: C:/FSE4/ELK_Logging/skilltracker-elk.log    
+# Hibernate ddl auto (create, create-drop, validate, update)    
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database      
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  cloud:
+    config: 
+      uri: http://localhost:8888
+  management:
+    security: 
+      enabled: false       
+      
+company:
+  name: CTS     
+  
+# Eureka Discovery Server Configutations
+##eureka:
+##  instance:
+##    preferIpAddress: true      
+##  client:
+    ##instance:
+##      hostname: localhost
+    ##serviceUrl:
+##      defaultZone: http://localhost:8761/eureka   
+    ##registerWithEureka: true
+    ##fetchRegistry: true         
+
+uri:
+  profile:
+    addEvent: http://localhost:8070/sendEventMessage/addProfile
+    updateEvent: http://localhost:8070/sendEventMessage/updateProfile
+    deleteEvent: http://localhost:8070/sendEventMessage/deleteProfile
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info    

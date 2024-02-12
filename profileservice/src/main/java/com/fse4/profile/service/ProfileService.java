@@ -74,8 +74,8 @@ public class ProfileService {
 		 * createdProfile = restTemplate.postForObject(uri, addProfile,
 		 * ProfileTO.class);
 		 */    
-        String restMessage = callToRestService(HttpMethod.POST, addProfileEventUri, addProfile);
-        log.info("LOG createProfile: published profile add message to skilltrackertopic topic : "+restMessage);    	
+        //String restMessage = callToRestService(HttpMethod.POST, addProfileEventUri, addProfile);
+        //log.info("LOG createProfile: published profile add message to skilltrackertopic topic : "+restMessage);    	
     	profileRepository.save(addProfile);
     	ProfileTO createdProfile = mapper.map(addProfile, ProfileTO.class);
     	return createdProfile;    	
@@ -100,8 +100,8 @@ public class ProfileService {
 		 * restMessage = restTemplate.postForObject(uri, profileDB, String.class);
 		 */
         log.info("LOG ENTRY before callToRestService : "+profileDB);
-        String restMessage = callToRestService(HttpMethod.PUT, updateProfileEventUri, profileDB);
-        log.info("LOG ENTRY restMessage : published profile update message to skilltrackertopic topic : "+restMessage);    			
+        //String restMessage = callToRestService(HttpMethod.PUT, updateProfileEventUri, profileDB);
+        //log.info("LOG ENTRY restMessage : published profile update message to skilltrackertopic topic : "+restMessage);    			
 		profileRepository.save(profileDB);   
 		ProfileTO updateProfileTO = new ModelMapper().map(profileDB, ProfileTO.class);		
 		return updateProfileTO;    	
@@ -119,8 +119,8 @@ public class ProfileService {
 		 * +updateProfileEventUri); } restTemplate = new RestTemplate();
 		 */
         log.info("LOG before callToRestService : "+profileDB);    	
-        String restMessage = callToRestService(HttpMethod.DELETE, deleteProfileEventUri, profileDB);
-        log.info("LOG ENTRY restMessage : published profile update message to skilltrackertopic topic : "+restMessage);    			        
+        //String restMessage = callToRestService(HttpMethod.DELETE, deleteProfileEventUri, profileDB);
+        //log.info("LOG ENTRY restMessage : published profile update message to skilltrackertopic topic : "+restMessage);    			        
         profileRepository.delete(profileDB);
         if(!skillRepository.findByAssociateId(associateId).isEmpty())
         	skillRepository.deleteAll(skillRepository.findByAssociateId(associateId));        
